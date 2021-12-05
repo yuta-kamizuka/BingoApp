@@ -1,0 +1,4 @@
+com/example/bingo/BuildConfig.java
+ com.example.bingo.BuildConfig
+com/example/bingo/databinding/ActivityMainBinding.java
+ com.example.bingo.databinding.ActivityMainBinding
