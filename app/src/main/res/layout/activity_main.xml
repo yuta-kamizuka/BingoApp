@@ -19,8 +19,9 @@
 
         <TextView
             android:id="@+id/result_Text"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:minWidth="50dp"
             android:background="@color/white"
             android:text=""
             android:textSize="40sp"
@@ -29,15 +30,16 @@
             android:layout_gravity="center" />
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/result_List"
         android:layout_width="300dp"
         android:layout_height="125dp"
-        app:layout_constraintBottom_toTopOf="@id/lottery"
+        android:background="@color/red"
+        app:layout_constraintBottom_toTopOf="@id/lottery_Bottom_Box"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result"
-        android:background="@color/red">
+        app:layout_constraintTop_toBottomOf="@id/result">
 
         <TextView
             android:id="@+id/result_List_View"
@@ -45,22 +47,43 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white"
-            android:text=""/>
+            android:text="" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/lottery"
-        style="?android:borderlessButtonStyle"
+    <LinearLayout
+        android:id="@+id/lottery_Bottom_Box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+
+        >
+    <Button
+        android:id="@+id/lottery_Start"
+        style="?android:borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
         android:backgroundTint="@color/white"
         android:textColor="@color/aqua"
         android:textSize="20sp"
-        android:text="@string/lottery_text"/>
+        android:text="@string/lottery_start"/>
+
+    <Button
+        android:id="@+id/lottery_Stop"
+        style="?android:borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/aqua"
+        android:textSize="20sp"
+        android:text="@string/lottery_stop"/>
+    </LinearLayout>
+
 
 
 
