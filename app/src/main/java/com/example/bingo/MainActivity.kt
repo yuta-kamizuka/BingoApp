@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         //クリックすると上部にランダムナンバーをロールさせる
         binding.lotteryStart.setOnClickListener {
+            binding.resultListView.text = bingoManager.lotteryHistory()
             timer(period = 100) {
                 handler.post {
                     binding.resultText.text = bingoManager.bingoRoll()
@@ -30,7 +31,6 @@ class MainActivity : AppCompatActivity() {
                 //ランダムナンバーのロールを止める
                 binding.lotteryStop.setOnClickListener {
                     cancel()
-                    binding.resultListView.text = bingoManager.lotteryHistory()
                     binding.resultText.text = bingoManager.nextBingo()
                 }
             }
