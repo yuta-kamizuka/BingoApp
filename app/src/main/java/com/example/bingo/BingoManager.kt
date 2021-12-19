@@ -1,15 +1,15 @@
 package com.example.bingo
 
 class BingoManager {
-    var bingonums = (1..75).toMutableList()
+    private var bingonums = (1..75).toMutableList()
     private val rollNumbers = bingonums
-    var nextNumber = 0
-    var lotteryNum = ""
-    var lotteryNumList = mutableListOf<String>()
+    private var nextNumber: Int? = null
+    private var lotteryNum = ""
+    private var lotteryNumList = mutableListOf<String>()
 
     //履歴を表示させる処理
     fun lotteryHistory():String {
-        if (nextNumber > 0) {
+        if (nextNumber != null) {
             lotteryNum += "$nextNumber,"
         }
         return lotteryNum
