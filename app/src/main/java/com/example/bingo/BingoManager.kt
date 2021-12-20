@@ -23,9 +23,8 @@ class BingoManager {
             lotteryNumList.add(nextNumber.toString())
             nextNumber.toString()
         } else {
-            val end = "終了"
             nextNumber = 0
-            end
+            "終了"
         }
     }
 

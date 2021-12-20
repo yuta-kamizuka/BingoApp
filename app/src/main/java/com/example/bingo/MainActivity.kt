@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.example.bingo.databinding.ActivityMainBinding
-import kotlin.concurrent.timer
+import java.util.*
+import kotlin.concurrent.schedule
 
 class MainActivity : AppCompatActivity() {
 
     private val handler = Handler(Looper.getMainLooper())
     private val bingoManager = BingoManager()
-
+    private var timer = Timer()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -20,20 +21,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //クリックすると上部にランダムナンバーをロールさせる
+        //クリックすると上部にランダムナンバーをロールさせる.2回目から下に履歴を表示される
         binding.lotteryStart.setOnClickListener {
             binding.resultListView.text = bingoManager.lotteryHistory()
-            timer(period = 100) {
+            timer.schedule(0,100) {
                 handler.post {
                     binding.resultText.text = bingoManager.bingoRoll()
                 }
-                //クリックするとビンゴナンバーが出る、2回目から下に履歴として表示される
-                //ランダムナンバーのロールを止める
-                binding.lotteryStop.setOnClickListener {
-                    cancel()
-                    binding.resultText.text = bingoManager.nextBingo()
-                }
             }
+        }
+        //クリックするとビンゴナンバーが出る、ランダムナンバーのロールを止める
+        //Timerを再度インスタンス化する事でロールを再度使えるようにする。
+        binding.lotteryStop.setOnClickListener {
+            timer.cancel()
+            timer = Timer()
+            binding.resultText.text = bingoManager.nextBingo()
         }
     }
 }
