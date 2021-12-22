@@ -8,7 +8,7 @@ class BingoManager {
     private var lotteryNumList = mutableListOf<String>()
 
     //履歴を表示させる処理
-    fun lotteryHistory():String {
+    fun lotteryHistory(): String {
         if (nextNumber != null) {
             lotteryNum += "$nextNumber,"
         }
@@ -23,13 +23,13 @@ class BingoManager {
             lotteryNumList.add(nextNumber.toString())
             nextNumber.toString()
         } else {
-            nextNumber = 0
+            nextNumber = null
             "終了"
         }
     }
 
     //ナンバーロールをランダム表示させる処理
-    fun bingoRoll():String {
+    fun bingoRoll(): String {
         var rollnumber = ""
         rollnumber = rollNumbers.random().toString()
         return rollnumber
