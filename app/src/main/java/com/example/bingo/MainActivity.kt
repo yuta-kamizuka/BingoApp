@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             binding.resultListView.text = bingoManager.lotteryHistory()
 
             timer = Timer()
-            timer!!.schedule(0,100) {
+            timer?.schedule(0,100) {
                 handler.post {
                     binding.resultText.text = bingoManager.bingoRoll()
                 }
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             binding.lotteryStop.isEnabled = false
             binding.resultText.text = bingoManager.nextBingo()
 
-            timer!!.cancel()
+            timer?.cancel()
             timer = null
         }
     }
